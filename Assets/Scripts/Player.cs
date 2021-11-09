@@ -30,7 +30,6 @@ public class Player : MonoBehaviour
         if (movimientoLongitudinal != 0 || movimientoTransversal != 0)
         {
             rigidBody.AddRelativeForce(Vector3.forward * -movimientoLongitudinal * velocidad);
-            //transform.Translate(Vector3.back * movimientoLongitudinal * velocidad * Time.deltaTime);
 
             anguloRotacion = (new Vector3(0, movimientoTransversal, 0)) * velocidad;
             Quaternion deltaRotation = Quaternion.Euler(anguloRotacion * Time.fixedDeltaTime);
