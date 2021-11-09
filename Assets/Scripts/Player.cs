@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -9,12 +11,18 @@ public class Player : MonoBehaviour
     private float movimientoTransversal, movimientoLongitudinal;
     private Rigidbody rigidBody;
     private Vector3 anguloRotacion;
+    private float contadorSegundos = 0;
+    private float contadorMinutos = 0;
 
     // Public
     public float velocidad = 1.5f;
     public Vector3 desplazamientoCamara;
     public bool ocupaCamara = true;
     public Camera mainCamera;
+    //public float tiempoTranscurrido = 0f;
+    public float tiempoRestante;
+
+    public Text lblTiempo;
 
     void Start()
     {
@@ -25,6 +33,21 @@ public class Player : MonoBehaviour
     
     void Update()
     {
+        //tiempoTranscurrido += Time.deltaTime;
+
+        if (contadorMinutos < 5)
+        {
+            contadorSegundos += Time.deltaTime;
+
+            if (contadorSegundos >= 59f)
+            {
+                contadorSegundos = 0f;
+                contadorMinutos++;
+            }
+
+            lblTiempo.text = contadorMinutos.ToString() + ":" + Convert.ToInt32(contadorSegundos).ToString();
+        }
+
         movimientoTransversal = Input.GetAxis("Horizontal");
         movimientoLongitudinal = Input.GetAxis("Vertical");
 
