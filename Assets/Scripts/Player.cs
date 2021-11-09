@@ -6,25 +6,14 @@ public class Player : MonoBehaviour
 {
     // Private 
     private Vector3 posicionInicial;
-    private float movimientoTransversal, movimientoLongitudinal, jump;
+    private float movimientoTransversal, movimientoLongitudinal;
     private Rigidbody rigidBody;
     private Vector3 anguloRotacion;
 
     // Public
     public float velocidad = 1.5f;
-    public float profundidadInicial = 1f;
-    public float desplazamiento = 3f;
     public Vector3 desplazamientoCamara;
     public Camera mainCamera;
-
-    private void FixedUpdate()
-    {
-        if (transform.position.y < 9)
-        {
-            float multiplicador = Mathf.Clamp01(transform.position.y / profundidadInicial) * desplazamiento;
-            rigidBody.AddForce(new Vector3(0f, Mathf.Abs(Physics.gravity.y) * multiplicador, 0f), ForceMode.Acceleration);
-        }
-    }
 
     void Start()
     {
@@ -37,7 +26,6 @@ public class Player : MonoBehaviour
     {
         movimientoTransversal = Input.GetAxis("Horizontal");
         movimientoLongitudinal = Input.GetAxis("Vertical");
-        jump = Input.GetAxis("Jump");
 
         if (movimientoLongitudinal != 0 || movimientoTransversal != 0)
         {
