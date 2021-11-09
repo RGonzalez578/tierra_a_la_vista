@@ -19,8 +19,8 @@ public class Player : MonoBehaviour
     public Vector3 desplazamientoCamara;
     public bool ocupaCamara = true;
     public Camera mainCamera;
-    //public float tiempoTranscurrido = 0f;
-    public float tiempoRestante;
+    public float limiteSegundos = 59f;
+    public float limiteMinutos = 5f;
 
     public Text lblTiempo;
 
@@ -35,17 +35,28 @@ public class Player : MonoBehaviour
     {
         //tiempoTranscurrido += Time.deltaTime;
 
-        if (contadorMinutos < 5)
+        if (contadorMinutos < limiteMinutos)
         {
             contadorSegundos += Time.deltaTime;
 
-            if (contadorSegundos >= 59f)
+            if (contadorSegundos >= limiteSegundos)
             {
                 contadorSegundos = 0f;
                 contadorMinutos++;
             }
 
-            lblTiempo.text = contadorMinutos.ToString() + ":" + Convert.ToInt32(contadorSegundos).ToString();
+            if (contadorSegundos <= 10f)
+            {
+                lblTiempo.text = contadorMinutos.ToString() + ":0" + Convert.ToInt32(contadorSegundos).ToString();
+            }
+            else
+            {
+                lblTiempo.text = contadorMinutos.ToString() + ":" + Convert.ToInt32(contadorSegundos).ToString();
+            }
+        }
+        else
+        {
+            habilitarPuertos();
         }
 
         movimientoTransversal = Input.GetAxis("Horizontal");
@@ -64,5 +75,10 @@ public class Player : MonoBehaviour
             mainCamera.transform.position = (transform.position + desplazamientoCamara);
         }
         
+    }
+
+    public void habilitarPuertos()
+    {
+        //float random = Random.Range(0,4);
     }
 }
