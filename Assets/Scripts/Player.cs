@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     // Public
     public float velocidad = 1.5f;
     public Vector3 desplazamientoCamara;
+    public bool ocupaCamara = true;
     public Camera mainCamera;
 
     void Start()
@@ -35,6 +36,10 @@ public class Player : MonoBehaviour
             Quaternion deltaRotation = Quaternion.Euler(anguloRotacion * Time.fixedDeltaTime);
             rigidBody.MoveRotation(rigidBody.rotation * deltaRotation);
         }
-        mainCamera.transform.position = (transform.position + desplazamientoCamara);
+        if (ocupaCamara)
+        {
+            mainCamera.transform.position = (transform.position + desplazamientoCamara);
+        }
+        
     }
 }
