@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     private Vector3 anguloRotacion;
     private float contadorSegundos = 0;
     private float contadorMinutos = 0;
+    private int oro = 1000;
 
     // Public
     public float velocidad = 1.5f;
@@ -22,12 +23,14 @@ public class Player : MonoBehaviour
     public float limiteSegundos = 59f;
     public float limiteMinutos = 5f;
 
+    public Text lblOro;
     public Text lblTiempo;
 
     void Start()
     {
         rigidBody = this.GetComponent<Rigidbody>();
         posicionInicial = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+        lblOro.text = oro.ToString();
     }
 
     
@@ -45,7 +48,7 @@ public class Player : MonoBehaviour
                 contadorMinutos++;
             }
 
-            if (contadorSegundos <= 10f)
+            if (contadorSegundos < 10f)
             {
                 lblTiempo.text = contadorMinutos.ToString() + ":0" + Convert.ToInt32(contadorSegundos).ToString();
             }
@@ -80,5 +83,22 @@ public class Player : MonoBehaviour
     public void habilitarPuertos()
     {
         //float random = Random.Range(0,4);
+    }
+
+    public int getOro()
+    {
+        return this.oro;
+    }
+
+    public void restarOro(int oroEliminado)
+    {
+        oro = oro - oroEliminado;
+        lblOro.text = oro.ToString();
+    }
+
+    public void sumarOro(int oroEliminado)
+    {
+        oro = oro + oroEliminado;
+        lblOro.text = oro.ToString();
     }
 }
