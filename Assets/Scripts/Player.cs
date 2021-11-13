@@ -13,6 +13,8 @@ public class Player : MonoBehaviour
     private Vector3 anguloRotacion;
     private float contadorSegundos = 0;
     private float contadorMinutos = 0;
+    private float contadorOro;
+
 
     // Public
     public float velocidad = 1.5f;
@@ -21,8 +23,11 @@ public class Player : MonoBehaviour
     public Camera mainCamera;
     public float limiteSegundos = 59f;
     public float limiteMinutos = 5f;
+    
 
     public Text lblTiempo;
+
+    
 
     void Start()
     {
@@ -74,11 +79,25 @@ public class Player : MonoBehaviour
         {
             mainCamera.transform.position = (transform.position + desplazamientoCamara);
         }
-        
+
+        contadorOro = 0;
+
+        if (contadorOro <= 0)
+        {
+            FinDeJuego();
+            //GameManager.instancia.cambiarEscena("SceneGameOver");
+        }
+
     }
 
     public void habilitarPuertos()
     {
         //float random = Random.Range(0,4);
+    }
+
+    public void FinDeJuego()
+    {
+        Debug.Log("Juego Finalizado");
+        GameManager.instancia.cambiarEscena("GameOver");
     }
 }

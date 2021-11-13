@@ -1325,6 +1325,14 @@ PrefabInstance:
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 43216601}
+    - target: {fileID: 2247622774464155894, guid: 67875e1481b191d4ba6e451a0ca158d6, type: 3}
+      propertyPath: contadorOro
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2247622774464155894, guid: 67875e1481b191d4ba6e451a0ca158d6, type: 3}
+      propertyPath: SceneGameOver
+      value: GameOver
+      objectReference: {fileID: 0}
     - target: {fileID: 2247622774464285265, guid: 67875e1481b191d4ba6e451a0ca158d6, type: 3}
       propertyPath: m_RootOrder
       value: 6
