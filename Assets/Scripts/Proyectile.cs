@@ -10,6 +10,7 @@ public class Proyectile : MonoBehaviour
 
     public int oroEliminado = 1;
     public GameObject oro;
+    public Gold gold;
 
     // Start is called before the first frame update
     void Start()
@@ -32,7 +33,7 @@ public class Proyectile : MonoBehaviour
 
             var container = player.transform.GetChild(23);
 
-            Debug.Log(""+container.position.x + "---" + container.position.z);
+            //Debug.Log(""+ container.transform.position.x + "---" + container.transform.position.z);
 
             transformX = container.transform.position.x;
             transformY = 10;
@@ -42,6 +43,7 @@ public class Proyectile : MonoBehaviour
 
             var prefabOro = oro.GetComponent<Gold>();
             prefabOro.posicionar(transformX, transformY, transformZ);
+            //Debug.Log("" + prefabOro.transform.position.x + "---" + prefabOro.transform.position.z);
         }
     }
 }
