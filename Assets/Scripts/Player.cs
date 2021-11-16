@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     private Vector3 anguloRotacion;
     private float contadorSegundos = 0;
     private float contadorMinutos = 0;
-    public float contadorOro = 50;
+    private int oro = 50;
     private bool puertosHabilitados = true;
 
     // Public
@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
     public float limiteMinutos = 5f;
     
 
+    public Text lblOro;
     public Text lblTiempo;
     public Text txtMensajes;
 
@@ -36,7 +37,8 @@ public class Player : MonoBehaviour
     {
         rigidBody = this.GetComponent<Rigidbody>();
         posicionInicial = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-
+        lblOro.text = oro.ToString();
+        
         for (int i = 0; i < muelles.Length; i++)
         {
             muelles[i].GetComponent<MeshRenderer>().enabled = false;
@@ -44,7 +46,6 @@ public class Player : MonoBehaviour
             GameObject muelle = muelles[i].transform.GetChild(0).gameObject;
             muelle.GetComponent<MeshRenderer>().enabled = false;
         }
-        
     }
 
     
@@ -62,19 +63,26 @@ public class Player : MonoBehaviour
                 contadorMinutos++;
             }
 
-            if (contadorSegundos <= 10f)
+            int contadorSeg = Convert.ToInt32(contadorSegundos);
+
+            if (contadorSeg < 10)
             {
-                lblTiempo.text = contadorMinutos.ToString() + ":0" + Convert.ToInt32(contadorSegundos).ToString();
+                lblTiempo.text = contadorMinutos.ToString() + ":0" + contadorSeg.ToString();
             }
             else
             {
-                lblTiempo.text = contadorMinutos.ToString() + ":" + Convert.ToInt32(contadorSegundos).ToString();
+                lblTiempo.text = contadorMinutos.ToString() + ":" + contadorSeg.ToString();
             }
         }
         else if(puertosHabilitados)
         {
             puertosHabilitados = false;
             habilitarPuertos();            
+        }
+
+        if (oro <= 0)
+        {
+            FinDeJuego();
         }
 
         movimientoTransversal = Input.GetAxis("Horizontal");
@@ -91,14 +99,6 @@ public class Player : MonoBehaviour
         if (ocupaCamara)
         {
             mainCamera.transform.position = (transform.position + desplazamientoCamara);
-        }
-
-        //contadorOro = 0;
-
-        if (contadorOro <= 0)
-        {
-            FinDeJuego();
-            //GameManager.instancia.cambiarEscena("SceneGameOver");
         }
 
     }
@@ -119,5 +119,22 @@ public class Player : MonoBehaviour
     {
         Debug.Log("Juego Finalizado");
         GameManager.instancia.cambiarEscena("GameOver");
+    }
+
+    public int getOro()
+    {
+        return this.oro;
+    }
+
+    public void restarOro(int oroEliminado)
+    {
+        oro = oro - oroEliminado;
+        lblOro.text = oro.ToString();
+    }
+
+    public void sumarOro(int oroEliminado)
+    {
+        oro = oro + oroEliminado;
+        lblOro.text = oro.ToString();
     }
 }
