@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     private Vector3 anguloRotacion;
     private float contadorSegundos = 0;
     private float contadorMinutos = 0;
+    private float contadorOro;
     private bool puertosHabilitados = true;
 
     // Public
@@ -22,11 +23,14 @@ public class Player : MonoBehaviour
     public Camera mainCamera;
     public float limiteSegundos = 59f;
     public float limiteMinutos = 5f;
+    
 
     public Text lblTiempo;
     public Text txtMensajes;
 
     public Muelle[] muelles;
+
+    
 
     void Start()
     {
@@ -88,12 +92,20 @@ public class Player : MonoBehaviour
         {
             mainCamera.transform.position = (transform.position + desplazamientoCamara);
         }
-        
+
+        contadorOro = 0;
+
+        if (contadorOro <= 0)
+        {
+            FinDeJuego();
+            //GameManager.instancia.cambiarEscena("SceneGameOver");
+        }
+
     }
 
     public void habilitarPuertos()
     {
-        txtMensajes.text = "¡Se ha habilitado un puerto!";
+        txtMensajes.text = "Â¡Se ha habilitado un puerto!";
 
         int nMuelles = UnityEngine.Random.Range(0, 5);
 
@@ -101,5 +113,11 @@ public class Player : MonoBehaviour
         muelles[nMuelles].GetComponent<CapsuleCollider>().enabled = true;
         GameObject muelle = muelles[nMuelles].transform.GetChild(0).gameObject;
         muelle.GetComponent<MeshRenderer>().enabled = true;
+    }
+
+    public void FinDeJuego()
+    {
+        Debug.Log("Juego Finalizado");
+        GameManager.instancia.cambiarEscena("GameOver");
     }
 }
