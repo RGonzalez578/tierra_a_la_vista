@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     private Vector3 anguloRotacion;
     private float contadorSegundos = 0;
     private float contadorMinutos = 0;
+    private bool puertosHabilitados = true;
 
     // Public
     public float velocidad = 1.5f;
@@ -23,11 +24,23 @@ public class Player : MonoBehaviour
     public float limiteMinutos = 5f;
 
     public Text lblTiempo;
+    public Text txtMensajes;
+
+    public Muelle[] muelles;
 
     void Start()
     {
         rigidBody = this.GetComponent<Rigidbody>();
         posicionInicial = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+
+        for (int i = 0; i < muelles.Length; i++)
+        {
+            muelles[i].GetComponent<MeshRenderer>().enabled = false;
+            muelles[i].GetComponent<CapsuleCollider>().enabled = false;
+            GameObject muelle = muelles[i].transform.GetChild(0).gameObject;
+            muelle.GetComponent<MeshRenderer>().enabled = false;
+        }
+        
     }
 
     
@@ -54,9 +67,10 @@ public class Player : MonoBehaviour
                 lblTiempo.text = contadorMinutos.ToString() + ":" + Convert.ToInt32(contadorSegundos).ToString();
             }
         }
-        else
+        else if(puertosHabilitados)
         {
-            habilitarPuertos();
+            puertosHabilitados = false;
+            habilitarPuertos();            
         }
 
         movimientoTransversal = Input.GetAxis("Horizontal");
@@ -79,6 +93,13 @@ public class Player : MonoBehaviour
 
     public void habilitarPuertos()
     {
-        //float random = Random.Range(0,4);
+        txtMensajes.text = "¡Se ha habilitado un puerto!";
+
+        int nMuelles = UnityEngine.Random.Range(0, 5);
+
+        muelles[nMuelles].GetComponent<MeshRenderer>().enabled = true;
+        muelles[nMuelles].GetComponent<CapsuleCollider>().enabled = true;
+        GameObject muelle = muelles[nMuelles].transform.GetChild(0).gameObject;
+        muelle.GetComponent<MeshRenderer>().enabled = true;
     }
 }
