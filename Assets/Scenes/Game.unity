@@ -2300,11 +2300,11 @@ PrefabInstance:
       objectReference: {fileID: 1237135365}
     - target: {fileID: 2247622774464155894, guid: 67875e1481b191d4ba6e451a0ca158d6, type: 3}
       propertyPath: limiteMinutos
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2247622774464155894, guid: 67875e1481b191d4ba6e451a0ca158d6, type: 3}
       propertyPath: limiteSegundos
-      value: 3
+      value: 59
       objectReference: {fileID: 0}
     - target: {fileID: 2247622774464155894, guid: 67875e1481b191d4ba6e451a0ca158d6, type: 3}
       propertyPath: muelles.Array.size
