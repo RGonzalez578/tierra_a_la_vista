@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     private Vector3 anguloRotacion;
     private float contadorSegundos = 0;
     private float contadorMinutos = 0;
-    private int oro = 1000;
+    private int oro = 50;
 
     // Public
     public float velocidad = 1.5f;
@@ -60,6 +60,11 @@ public class Player : MonoBehaviour
         else
         {
             habilitarPuertos();
+        }
+
+        if (oro <= 0)
+        {
+            GameManager.instancia.cambiarEscena("GameOver");
         }
 
         movimientoTransversal = Input.GetAxis("Horizontal");

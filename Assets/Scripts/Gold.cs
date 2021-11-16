@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Gold : MonoBehaviour
 {
-    private float valorY;
-
     public int oroRecuperado = 1;
 
     // Start is called before the first frame update
