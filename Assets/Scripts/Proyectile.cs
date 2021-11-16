@@ -33,7 +33,7 @@ public class Proyectile : MonoBehaviour
             player.restarOro(oroEliminado);
 
             // Se obtiene la posición del spawn point
-            var container = player.transform.GetChild(23);
+            var container = player.transform.GetChild(24);
 
             //Debug.Log(""+ container.transform.position.x + "---" + container.transform.position.z);
 

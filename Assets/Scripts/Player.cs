@@ -13,8 +13,8 @@ public class Player : MonoBehaviour
     private Vector3 anguloRotacion;
     private float contadorSegundos = 0;
     private float contadorMinutos = 0;
-    private int oro = 50;
     private bool puertosHabilitados = true;
+    private float contColdownPerdida = 0;
 
     // Public
     public float velocidad = 1.5f;
@@ -23,7 +23,8 @@ public class Player : MonoBehaviour
     public Camera mainCamera;
     public float limiteSegundos = 59f;
     public float limiteMinutos = 5f;
-    
+    public int oro = 50;
+
 
     public Text lblOro;
     public Text lblTiempo;
@@ -38,7 +39,9 @@ public class Player : MonoBehaviour
         rigidBody = this.GetComponent<Rigidbody>();
         posicionInicial = new Vector3(transform.position.x, transform.position.y, transform.position.z);
         lblOro.text = oro.ToString();
-        
+        contColdownPerdida = 3f;
+
+
         for (int i = 0; i < muelles.Length; i++)
         {
             muelles[i].GetComponent<MeshRenderer>().enabled = false;
@@ -82,23 +85,33 @@ public class Player : MonoBehaviour
 
         if (oro <= 0)
         {
-            FinDeJuego();
+            contColdownPerdida -= Time.deltaTime;
+
+            txtMensajes.text = "¡Te han robado el oro! ¡Perdiste! " + Convert.ToInt32(contColdownPerdida);
+
+            if (contColdownPerdida <= 0)
+            {
+                FinDeJuego();
+            }
         }
 
         movimientoTransversal = Input.GetAxis("Horizontal");
         movimientoLongitudinal = Input.GetAxis("Vertical");
 
-        if (movimientoLongitudinal != 0 || movimientoTransversal != 0)
+        if (oro > 0)
         {
-            rigidBody.AddRelativeForce(Vector3.forward * -movimientoLongitudinal * velocidad);
+            if (movimientoLongitudinal != 0 || movimientoTransversal != 0)
+            {
+                rigidBody.AddRelativeForce(Vector3.forward * -movimientoLongitudinal * velocidad);
 
-            anguloRotacion = (new Vector3(0, movimientoTransversal, 0)) * velocidad;
-            Quaternion deltaRotation = Quaternion.Euler(anguloRotacion * Time.fixedDeltaTime);
-            rigidBody.MoveRotation(rigidBody.rotation * deltaRotation);
-        }
-        if (ocupaCamara)
-        {
-            mainCamera.transform.position = (transform.position + desplazamientoCamara);
+                anguloRotacion = (new Vector3(0, movimientoTransversal, 0)) * velocidad;
+                Quaternion deltaRotation = Quaternion.Euler(anguloRotacion * Time.fixedDeltaTime);
+                rigidBody.MoveRotation(rigidBody.rotation * deltaRotation);
+            }
+            if (ocupaCamara)
+            {
+                mainCamera.transform.position = (transform.position + desplazamientoCamara);
+            }
         }
 
     }
