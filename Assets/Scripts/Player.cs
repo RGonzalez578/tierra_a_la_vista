@@ -48,13 +48,15 @@ public class Player : MonoBehaviour
                 contadorMinutos++;
             }
 
-            if (contadorSegundos < 10f)
+            int contadorSeg = Convert.ToInt32(contadorSegundos);
+
+            if (contadorSeg < 10)
             {
-                lblTiempo.text = contadorMinutos.ToString() + ":0" + Convert.ToInt32(contadorSegundos).ToString();
+                lblTiempo.text = contadorMinutos.ToString() + ":0" + contadorSeg.ToString();
             }
             else
             {
-                lblTiempo.text = contadorMinutos.ToString() + ":" + Convert.ToInt32(contadorSegundos).ToString();
+                lblTiempo.text = contadorMinutos.ToString() + ":" + contadorSeg.ToString();
             }
         }
         else
