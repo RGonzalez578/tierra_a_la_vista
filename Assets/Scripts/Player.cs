@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     private Vector3 anguloRotacion;
     private float contadorSegundos = 0;
     private float contadorMinutos = 0;
-    private float contadorOro;
+    public float contadorOro = 50;
     private bool puertosHabilitados = true;
 
     // Public
@@ -93,7 +93,7 @@ public class Player : MonoBehaviour
             mainCamera.transform.position = (transform.position + desplazamientoCamara);
         }
 
-        contadorOro = 0;
+        //contadorOro = 0;
 
         if (contadorOro <= 0)
         {

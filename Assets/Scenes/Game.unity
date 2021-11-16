@@ -2295,9 +2295,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 43216601}
     - target: {fileID: 2247622774464155894, guid: 67875e1481b191d4ba6e451a0ca158d6, type: 3}
+      propertyPath: contadorOro
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2247622774464155894, guid: 67875e1481b191d4ba6e451a0ca158d6, type: 3}
       propertyPath: txtMensajes
       value: 
       objectReference: {fileID: 1237135365}
+    - target: {fileID: 2247622774464155894, guid: 67875e1481b191d4ba6e451a0ca158d6, type: 3}
+      propertyPath: SceneGameOver
+      value: GameOver
+      objectReference: {fileID: 0}
     - target: {fileID: 2247622774464155894, guid: 67875e1481b191d4ba6e451a0ca158d6, type: 3}
       propertyPath: limiteMinutos
       value: 5
@@ -2318,14 +2326,6 @@ PrefabInstance:
       propertyPath: muelles.Array.data[1]
       value: 
       objectReference: {fileID: 1045324454}
-    - target: {fileID: 2247622774464155894, guid: 67875e1481b191d4ba6e451a0ca158d6, type: 3}
-      propertyPath: contadorOro
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2247622774464155894, guid: 67875e1481b191d4ba6e451a0ca158d6, type: 3}
-      propertyPath: SceneGameOver
-      value: GameOver
-      objectReference: {fileID: 0}
     - target: {fileID: 2247622774464155894, guid: 67875e1481b191d4ba6e451a0ca158d6, type: 3}
       propertyPath: muelles.Array.data[2]
       value: 
