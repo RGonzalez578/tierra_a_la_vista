@@ -213,17 +213,56 @@ public class Player : MonoBehaviour
     }
     public void disparar()
     {
-        var municionAdelante = GameObject.Instantiate(municionJugador, containerMunicionAdelante.transform.position, containerMunicionAdelante.transform.rotation);
-        var municionizq = GameObject.Instantiate(municionJugador, containerMunicionIzq.transform.position, containerMunicionIzq.transform.rotation);
-        var municionDer = GameObject.Instantiate(municionJugador, containerMunicionDer.transform.position, containerMunicionDer.transform.rotation);
+        if (municionDisponible > 0 && municionDisponible != 2 && municionDisponible != 1)
+        {
+            var municionAdelante = GameObject.Instantiate(municionJugador, containerMunicionAdelante.transform.position, containerMunicionAdelante.transform.rotation);
+            var municionizq = GameObject.Instantiate(municionJugador, containerMunicionIzq.transform.position, containerMunicionIzq.transform.rotation);
+            var municionDer = GameObject.Instantiate(municionJugador, containerMunicionDer.transform.position, containerMunicionDer.transform.rotation);
 
-        municionAdelante.GetComponent<Rigidbody>().AddRelativeForce(Vector3.back * fuerzaMunicion, ForceMode.Impulse);
-        municionAdelante.GetComponent<Rigidbody>().AddRelativeForce(Vector3.up * (fuerzaMunicion/5), ForceMode.Impulse);
+            municionAdelante.GetComponent<Rigidbody>().velocity = rigidBody.velocity;
+            municionizq.GetComponent<Rigidbody>().velocity = rigidBody.velocity;
+            municionDer.GetComponent<Rigidbody>().velocity = rigidBody.velocity;
 
-        municionizq.GetComponent<Rigidbody>().AddRelativeForce(Vector3.right * fuerzaMunicion, ForceMode.Impulse);
-        municionizq.GetComponent<Rigidbody>().AddRelativeForce(Vector3.up * (fuerzaMunicion / 5), ForceMode.Impulse);
+            municionAdelante.GetComponent<Rigidbody>().AddRelativeForce(Vector3.back * fuerzaMunicion, ForceMode.Impulse);
+            municionAdelante.GetComponent<Rigidbody>().AddRelativeForce(Vector3.up * (fuerzaMunicion / 5), ForceMode.Impulse);
 
-        municionDer.GetComponent<Rigidbody>().AddRelativeForce(Vector3.left * fuerzaMunicion, ForceMode.Impulse);
-        municionDer.GetComponent<Rigidbody>().AddRelativeForce(Vector3.up * (fuerzaMunicion / 5), ForceMode.Impulse);
+            municionizq.GetComponent<Rigidbody>().AddRelativeForce(Vector3.right * fuerzaMunicion, ForceMode.Impulse);
+            municionizq.GetComponent<Rigidbody>().AddRelativeForce(Vector3.up * (fuerzaMunicion / 5), ForceMode.Impulse);
+
+            municionDer.GetComponent<Rigidbody>().AddRelativeForce(Vector3.left * fuerzaMunicion, ForceMode.Impulse);
+            municionDer.GetComponent<Rigidbody>().AddRelativeForce(Vector3.up * (fuerzaMunicion / 5), ForceMode.Impulse);
+
+            municionDisponible -= 3;
+            txtMunicion.text = municionDisponible.ToString();
+        }
+        else if (municionDisponible == 2)
+        {
+            var municionizq = GameObject.Instantiate(municionJugador, containerMunicionIzq.transform.position, containerMunicionIzq.transform.rotation);
+            var municionDer = GameObject.Instantiate(municionJugador, containerMunicionDer.transform.position, containerMunicionDer.transform.rotation);
+
+            municionizq.GetComponent<Rigidbody>().velocity = rigidBody.velocity;
+            municionDer.GetComponent<Rigidbody>().velocity = rigidBody.velocity;
+
+            municionizq.GetComponent<Rigidbody>().AddRelativeForce(Vector3.right * fuerzaMunicion, ForceMode.Impulse);
+            municionizq.GetComponent<Rigidbody>().AddRelativeForce(Vector3.up * (fuerzaMunicion / 5), ForceMode.Impulse);
+
+            municionDer.GetComponent<Rigidbody>().AddRelativeForce(Vector3.left * fuerzaMunicion, ForceMode.Impulse);
+            municionDer.GetComponent<Rigidbody>().AddRelativeForce(Vector3.up * (fuerzaMunicion / 5), ForceMode.Impulse);
+
+            municionDisponible -= 2;
+            txtMunicion.text = municionDisponible.ToString();
+        }else if (municionDisponible == 1)
+        {
+            var municionAdelante = GameObject.Instantiate(municionJugador, containerMunicionAdelante.transform.position, containerMunicionAdelante.transform.rotation);
+            
+            municionAdelante.GetComponent<Rigidbody>().velocity = rigidBody.velocity;
+
+            municionAdelante.GetComponent<Rigidbody>().AddRelativeForce(Vector3.back * fuerzaMunicion, ForceMode.Impulse);
+            municionAdelante.GetComponent<Rigidbody>().AddRelativeForce(Vector3.up * (fuerzaMunicion / 5), ForceMode.Impulse);
+
+            municionDisponible -= 1;
+            txtMunicion.text = municionDisponible.ToString();
+        }
+        
     }
 }
