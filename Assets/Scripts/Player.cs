@@ -24,15 +24,14 @@ public class Player : MonoBehaviour
     public float limiteSegundos = 59f;
     public float limiteMinutos = 5f;
     public int oro = 50;
-
+    public int municionDisponible = 50;
 
     public Text lblOro;
     public Text lblTiempo;
     public Text txtMensajes;
+    public Text txtMunicion;
 
     public Muelle[] muelles;
-
-    
 
     void Start()
     {
@@ -40,6 +39,7 @@ public class Player : MonoBehaviour
         posicionInicial = new Vector3(transform.position.x, transform.position.y, transform.position.z);
         lblOro.text = oro.ToString();
         contColdownPerdida = 3f;
+        txtMunicion.text = municionDisponible.ToString();
 
 
         for (int i = 0; i < muelles.Length; i++)
@@ -139,6 +139,11 @@ public class Player : MonoBehaviour
         return this.oro;
     }
 
+    public int getMunicion()
+    {
+        return this.municionDisponible;
+    }
+
     public void restarOro(int oroEliminado)
     {
         oro = oro - oroEliminado;
@@ -149,5 +154,11 @@ public class Player : MonoBehaviour
     {
         oro = oro + oroEliminado;
         lblOro.text = oro.ToString();
+    }
+
+    public void sumarMunicion(int municion)
+    {
+        municionDisponible = municionDisponible + municion;
+        txtMunicion.text = municionDisponible.ToString();
     }
 }
