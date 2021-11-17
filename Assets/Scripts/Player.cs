@@ -36,10 +36,13 @@ public class Player : MonoBehaviour
 
     void Start()
     {
+        var escudo = transform.GetChild(25).gameObject;
+        escudo.SetActive(false);
         rigidBody = this.GetComponent<Rigidbody>();
         posicionInicial = new Vector3(transform.position.x, transform.position.y, transform.position.z);
         lblOro.text = oro.ToString();
         contColdownPerdida = 3f;
+        
 
 
         for (int i = 0; i < muelles.Length; i++)
