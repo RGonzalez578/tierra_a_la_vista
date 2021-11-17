@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+
+    private int puntajeJugador;
+
     //Singelton
     private static GameManager _instancia;
     public static GameManager instancia
@@ -35,5 +38,15 @@ public class GameManager : MonoBehaviour
     public void Salir()
     {
         Application.Quit();
+    }
+
+    public void setPuntajeJugador(int puntaje)
+    {
+        puntajeJugador = puntaje;
+    }
+
+    public int getPuntajeJugador()
+    {
+        return puntajeJugador;
     }
 }

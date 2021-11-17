@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     private float contadorMinutos = 0;
     private bool puertosHabilitados = true;
     private float contColdownPerdida = 0;
+    private int enemigosEliminados = 1;
 
     // Public
     public float velocidad = 1.5f;
@@ -30,9 +31,7 @@ public class Player : MonoBehaviour
     public Text lblTiempo;
     public Text txtMensajes;
 
-    public Muelle[] muelles;
-
-    
+    public Muelle[] muelles;    
 
     void Start()
     {
@@ -130,6 +129,7 @@ public class Player : MonoBehaviour
 
     public void FinDeJuego()
     {
+        GameManager.instancia.setPuntajeJugador(calcularPuntaje(false));
         Debug.Log("Juego Finalizado");
         GameManager.instancia.cambiarEscena("GameOver");
     }
@@ -149,5 +149,19 @@ public class Player : MonoBehaviour
     {
         oro = oro + oroEliminado;
         lblOro.text = oro.ToString();
+    }
+
+    public int calcularPuntaje(bool win)
+    {
+        int puntajeJugador = 0;
+        if (win)
+        {
+            puntajeJugador = ((oro * enemigosEliminados) + 1000) * 100;
+        }
+        else
+        {
+            puntajeJugador = enemigosEliminados * 100;
+        }
+        return puntajeJugador;
     }
 }
