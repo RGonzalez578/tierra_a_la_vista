@@ -27,10 +27,10 @@ public class Muelle : MonoBehaviour
         {
             if (other.gameObject.CompareTag("Player"))
             {
+                GameManager.instancia.setPuntajeJugador(other.gameObject.GetComponent<Player>().calcularPuntaje(true));
                 ganarPartida();
             }
         }
-        
     }
 
     private void OnTriggerExit(Collider other)

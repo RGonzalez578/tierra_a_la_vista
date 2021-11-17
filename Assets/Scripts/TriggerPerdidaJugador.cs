@@ -8,6 +8,7 @@ public class TriggerPerdidaJugador : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            GameManager.instancia.setPuntajeJugador(other.gameObject.GetComponent<Player>().calcularPuntaje(false));
             Debug.Log("Colisión de pérdida detectada");            
             GameManager.instancia.cambiarEscena("GameOver");
         }
