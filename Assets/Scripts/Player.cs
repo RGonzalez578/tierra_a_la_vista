@@ -27,18 +27,19 @@ public class Player : MonoBehaviour
     public float limiteSegundos = 59f;
     public float limiteMinutos = 5f;
     public int oro = 50;
+    public int municionDisponible = 50;
     public GameObject municionJugador;
     public GameObject containerMunicionAdelante;
     public GameObject containerMunicionIzq;
     public GameObject containerMunicionDer;
 
-
     public Text lblOro;
     public Text lblTiempo;
     public Text txtMensajes;
-    public Text txtEnemigosEliminados;
+    public Text txtMunicion;
 
-    public Muelle[] muelles;    
+    public Muelle[] muelles;
+    public Text txtEnemigosEliminados;
 
     void Start()
     {
@@ -47,6 +48,7 @@ public class Player : MonoBehaviour
         lblOro.text = oro.ToString();
         txtEnemigosEliminados.text = enemigosEliminados.ToString();
         contColdownPerdida = 3f;
+        txtMunicion.text = municionDisponible.ToString();
 
 
         for (int i = 0; i < muelles.Length; i++)
@@ -168,6 +170,11 @@ public class Player : MonoBehaviour
         return this.oro;
     }
 
+    public int getMunicion()
+    {
+        return this.municionDisponible;
+    }
+
     public void restarOro(int oroEliminado)
     {
         oro = oro - oroEliminado;
@@ -180,6 +187,11 @@ public class Player : MonoBehaviour
         lblOro.text = oro.ToString();
     }
 
+    public void sumarMunicion(int municion)
+    {
+        municionDisponible = municionDisponible + municion;
+        txtMunicion.text = municionDisponible.ToString();
+    }
     public void sumarEnemigosEliminados()
     {
         enemigosEliminados++;
@@ -213,6 +225,5 @@ public class Player : MonoBehaviour
 
         municionDer.GetComponent<Rigidbody>().AddRelativeForce(Vector3.left * fuerzaMunicion, ForceMode.Impulse);
         municionDer.GetComponent<Rigidbody>().AddRelativeForce(Vector3.up * (fuerzaMunicion / 5), ForceMode.Impulse);
-
     }
 }
