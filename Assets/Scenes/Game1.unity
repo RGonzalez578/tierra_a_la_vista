@@ -2700,7 +2700,7 @@ PrefabInstance:
       objectReference: {fileID: 996739348}
     - target: {fileID: 2247622774464155894, guid: 67875e1481b191d4ba6e451a0ca158d6, type: 3}
       propertyPath: velocidad
-      value: 20
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2247622774464155894, guid: 67875e1481b191d4ba6e451a0ca158d6, type: 3}
       propertyPath: mainCamera
