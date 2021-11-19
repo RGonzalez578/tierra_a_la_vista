@@ -206,6 +206,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 50.231, y: 0, z: 0}
+--- !u!1 &118642199 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6695041914992212265, guid: db706c319cea9c84fa3b41390a92cf69, type: 3}
+  m_PrefabInstance: {fileID: 6695041914927585747}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &118642200 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6695041914365920717, guid: db706c319cea9c84fa3b41390a92cf69, type: 3}
+  m_PrefabInstance: {fileID: 6695041914927585747}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 118642199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad0f31a6d15895d4e947109136cc7bdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &152673053
 GameObject:
   m_ObjectHideFlags: 0
@@ -711,7 +727,6 @@ GameObject:
   - component: {fileID: 555557325}
   - component: {fileID: 555557324}
   - component: {fileID: 555557323}
-  - component: {fileID: 555557326}
   m_Layer: 0
   m_Name: EscudoPowerUp
   m_TagString: Untagged
@@ -795,18 +810,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 555557321}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &555557326
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 555557321}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5e66b51b84242b4ca49a78d79f7c103, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &565436824
 GameObject:
   m_ObjectHideFlags: 0
@@ -1583,6 +1586,7 @@ MonoBehaviour:
   ramdomZ: 0
   powerUp: {fileID: 6695041914992212265, guid: db706c319cea9c84fa3b41390a92cf69, type: 3}
   player: {fileID: 334822527}
+  powerUpInstance: {fileID: 118642200}
   escudo: {fileID: 555557321}
 --- !u!1 &1056548660
 GameObject:
@@ -2674,6 +2678,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2247622774464155883, guid: 67875e1481b191d4ba6e451a0ca158d6, type: 3}
+      propertyPath: desplazamiento
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2247622774464155892, guid: 67875e1481b191d4ba6e451a0ca158d6, type: 3}
       propertyPath: m_IsTrigger
       value: 0
@@ -2690,6 +2698,10 @@ PrefabInstance:
       propertyPath: lblTiempo
       value: 
       objectReference: {fileID: 996739348}
+    - target: {fileID: 2247622774464155894, guid: 67875e1481b191d4ba6e451a0ca158d6, type: 3}
+      propertyPath: velocidad
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 2247622774464155894, guid: 67875e1481b191d4ba6e451a0ca158d6, type: 3}
       propertyPath: mainCamera
       value: 
@@ -3806,6 +3818,18 @@ PrefabInstance:
       propertyPath: escudo
       value: 
       objectReference: {fileID: 555557321}
+    - target: {fileID: 6695041914365920717, guid: db706c319cea9c84fa3b41390a92cf69, type: 3}
+      propertyPath: botella
+      value: 
+      objectReference: {fileID: 118642199}
+    - target: {fileID: 6695041914365920717, guid: db706c319cea9c84fa3b41390a92cf69, type: 3}
+      propertyPath: escudoManager
+      value: 
+      objectReference: {fileID: 555557321}
+    - target: {fileID: 6695041914365920717, guid: db706c319cea9c84fa3b41390a92cf69, type: 3}
+      propertyPath: estadoPowerUp
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6695041914991912201, guid: db706c319cea9c84fa3b41390a92cf69, type: 3}
       propertyPath: m_RootOrder
       value: 1

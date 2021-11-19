@@ -6,12 +6,13 @@ using UnityEngine;
 public class PowerUp : MonoBehaviour
 {
 
-    private GameObject escudoManager;
+    public GameObject escudoManager;
+    
     
 
     public float contPowerUp = 0f;
     public int limitePowerUp = 10;
-    public int tiempoActivo = 45;
+    public int tiempoActivo = 50;
 
     public bool estadoPowerUp = false;
    
@@ -19,28 +20,14 @@ public class PowerUp : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //timer = gameObject.GetComponent<PowerUp>();
-        //escudoManager = FindObjectOfType<EscudoManager>().gameObject;
+        
+       
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (estadoPowerUp)
-        {
-            if (contPowerUp <= limitePowerUp)
-            {
-                contPowerUp += Time.deltaTime;
-            }
-            else 
-            {
-                contPowerUp = 0f;
-                escudoManager.SetActive(false);
-                estadoPowerUp = false;
-            }
-
-        }
-        Destroy(this.gameObject, tiempoActivo);
+       
 
     }
 
@@ -48,11 +35,12 @@ public class PowerUp : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            //var player = other.GetComponent<Player>();
-            //var escudo = player.transform.GetChild(25).gameObject;
-            escudoManager.SetActive(true);
             estadoPowerUp = true;
+            escudoManager.SetActive(true);
+            Debug.Log("Escudo esta activado");
+           
             Destroy(this.gameObject);
+
         }
     }
 
@@ -62,8 +50,16 @@ public class PowerUp : MonoBehaviour
         escudoManager = escudo;
     }
 
+    public void setEscudoFalse(GameObject escudo)
+    {
+        escudoManager.SetActive(false);
+        escudoManager = escudo;
+    }
+
     public GameObject getEscudo() 
     {
         return escudoManager;
     }
+
+    
 }

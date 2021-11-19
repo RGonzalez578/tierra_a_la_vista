@@ -5,11 +5,12 @@ using UnityEngine;
 public class PowerUpManager : MonoBehaviour
 {
     public float contPowerUp = 0f;
-    public int limitePowerUp = 10;
+    public int limitePowerUp = 30;
     public float ramdomX;
     public float ramdomZ;
     public GameObject powerUp;
     public Player player;
+    public PowerUp powerUpInstance;
 
 
     public GameObject escudo;
@@ -30,12 +31,25 @@ public class PowerUpManager : MonoBehaviour
 
             var prefab = GameObject.Instantiate(powerUp, new Vector3(ramdomX, 11, ramdomZ), Quaternion.Euler(0, 0, 0));
             prefab.GetComponent<PowerUp>().setEscudo(escudo);
+            
+            if (contPowerUp <= limitePowerUp)
+            {
+                contPowerUp += Time.deltaTime;
+            }
+            else
+            {
+                contPowerUp = 0f;
+                prefab.GetComponent<PowerUp>().setEscudoFalse(escudo);
+                //Debug.Log("Escudo desactivado");
+            }
 
-            contPowerUp = 0f;
+            //contPowerUp = 0f;
+
         }
         else
         {
             contPowerUp += Time.deltaTime;
         }
+
     }
 }
