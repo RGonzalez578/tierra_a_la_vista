@@ -18,6 +18,9 @@ public class Player : MonoBehaviour
     private bool colisionDetectada = false;
     public float contPowerUp = 0f;
     private int limitePowerUp = 10;
+    private int enemigosEliminados = 0;
+    private float fuerzaMunicion = 20f;
+    private float cooldown = 0;
 
     // Public
     public float velocidad = 1.5f;
@@ -28,14 +31,19 @@ public class Player : MonoBehaviour
     public float limiteMinutos = 5f;
     public int oro = 50;
     public GameObject escudo;
+    public int municionDisponible = 50;
+    public GameObject municionJugador;
+    public GameObject containerMunicionAdelante;
+    public GameObject containerMunicionIzq;
+    public GameObject containerMunicionDer;
 
     public Text lblOro;
     public Text lblTiempo;
     public Text txtMensajes;
+    public Text txtMunicion;
 
     public Muelle[] muelles;
-
-    
+    public Text txtEnemigosEliminados;
 
     void Start()
     {
@@ -44,8 +52,10 @@ public class Player : MonoBehaviour
         rigidBody = this.GetComponent<Rigidbody>();
         posicionInicial = new Vector3(transform.position.x, transform.position.y, transform.position.z);
         lblOro.text = oro.ToString();
+        txtEnemigosEliminados.text = enemigosEliminados.ToString();
         contColdownPerdida = 3f;
         
+        txtMunicion.text = municionDisponible.ToString();
 
 
         for (int i = 0; i < muelles.Length; i++)
@@ -119,6 +129,27 @@ public class Player : MonoBehaviour
                 mainCamera.transform.position = (transform.position + desplazamientoCamara);
             }
         }
+        else
+        {
+            anguloRotacion = (new Vector3(UnityEngine.Random.Range(-1, 1), 0, UnityEngine.Random.Range(-1, 1))) * velocidad;
+            Quaternion deltaRotation = Quaternion.Euler(anguloRotacion * Time.fixedDeltaTime);
+            rigidBody.MoveRotation(rigidBody.rotation * deltaRotation);
+        }
+
+        if (cooldown > 0)
+        {
+            cooldown -= Time.deltaTime;
+        }
+        if (cooldown <= 0)
+        {
+            cooldown = 0;
+        }
+
+        if (Input.GetKeyDown(KeyCode.K) && cooldown <= 0)
+        {
+            disparar();
+            cooldown = 3;
+        }
 
         managerEscudo();
     }
@@ -137,6 +168,7 @@ public class Player : MonoBehaviour
 
     public void FinDeJuego()
     {
+        GameManager.instancia.setPuntajeJugador(calcularPuntaje(false));
         Debug.Log("Juego Finalizado");
         GameManager.instancia.cambiarEscena("GameOver");
     }
@@ -144,6 +176,11 @@ public class Player : MonoBehaviour
     public int getOro()
     {
         return this.oro;
+    }
+
+    public int getMunicion()
+    {
+        return this.municionDisponible;
     }
 
     public void restarOro(int oroEliminado)
@@ -157,7 +194,7 @@ public class Player : MonoBehaviour
         oro = oro + oroEliminado;
         lblOro.text = oro.ToString();
     }
-
+    
     public void managerEscudo()
     {
         if (colisionDetectada)
@@ -186,4 +223,83 @@ public class Player : MonoBehaviour
     {
         colisionDetectada = colision;
     }
+    
+    public void sumarMunicion(int municion)
+    {
+        municionDisponible = municionDisponible + municion;
+        txtMunicion.text = municionDisponible.ToString();
+    }
+    
+    public void sumarEnemigosEliminados()
+    {
+        enemigosEliminados++;
+        txtEnemigosEliminados.text = enemigosEliminados.ToString();
+    }
+
+    public int calcularPuntaje(bool win)
+    {
+        int puntajeJugador = 0;
+        if (win)
+        {
+            puntajeJugador = ((oro * enemigosEliminados) + 1000) * 100;
+        }
+        else
+        {
+            puntajeJugador = enemigosEliminados * 100;
+        }
+        return puntajeJugador;
+    }
+    
+    public void disparar()
+    {
+        if (municionDisponible > 0 && municionDisponible != 2 && municionDisponible != 1)
+        {
+            var municionAdelante = GameObject.Instantiate(municionJugador, containerMunicionAdelante.transform.position, containerMunicionAdelante.transform.rotation);
+            var municionizq = GameObject.Instantiate(municionJugador, containerMunicionIzq.transform.position, containerMunicionIzq.transform.rotation);
+            var municionDer = GameObject.Instantiate(municionJugador, containerMunicionDer.transform.position, containerMunicionDer.transform.rotation);
+
+            municionAdelante.GetComponent<Rigidbody>().velocity = rigidBody.velocity;
+            municionizq.GetComponent<Rigidbody>().velocity = rigidBody.velocity;
+            municionDer.GetComponent<Rigidbody>().velocity = rigidBody.velocity;
+
+            municionAdelante.GetComponent<Rigidbody>().AddRelativeForce(Vector3.back * fuerzaMunicion, ForceMode.Impulse);
+            municionAdelante.GetComponent<Rigidbody>().AddRelativeForce(Vector3.up * (fuerzaMunicion / 5), ForceMode.Impulse);
+
+            municionizq.GetComponent<Rigidbody>().AddRelativeForce(Vector3.right * fuerzaMunicion, ForceMode.Impulse);
+            municionizq.GetComponent<Rigidbody>().AddRelativeForce(Vector3.up * (fuerzaMunicion / 5), ForceMode.Impulse);
+
+            municionDer.GetComponent<Rigidbody>().AddRelativeForce(Vector3.left * fuerzaMunicion, ForceMode.Impulse);
+            municionDer.GetComponent<Rigidbody>().AddRelativeForce(Vector3.up * (fuerzaMunicion / 5), ForceMode.Impulse);
+
+            municionDisponible -= 3;
+            txtMunicion.text = municionDisponible.ToString();
+        }
+        else if (municionDisponible == 2)
+        {
+            var municionizq = GameObject.Instantiate(municionJugador, containerMunicionIzq.transform.position, containerMunicionIzq.transform.rotation);
+            var municionDer = GameObject.Instantiate(municionJugador, containerMunicionDer.transform.position, containerMunicionDer.transform.rotation);
+
+            municionizq.GetComponent<Rigidbody>().velocity = rigidBody.velocity;
+            municionDer.GetComponent<Rigidbody>().velocity = rigidBody.velocity;
+
+            municionizq.GetComponent<Rigidbody>().AddRelativeForce(Vector3.right * fuerzaMunicion, ForceMode.Impulse);
+            municionizq.GetComponent<Rigidbody>().AddRelativeForce(Vector3.up * (fuerzaMunicion / 5), ForceMode.Impulse);
+
+            municionDer.GetComponent<Rigidbody>().AddRelativeForce(Vector3.left * fuerzaMunicion, ForceMode.Impulse);
+            municionDer.GetComponent<Rigidbody>().AddRelativeForce(Vector3.up * (fuerzaMunicion / 5), ForceMode.Impulse);
+
+            municionDisponible -= 2;
+            txtMunicion.text = municionDisponible.ToString();
+        }else if (municionDisponible == 1)
+        {
+            var municionAdelante = GameObject.Instantiate(municionJugador, containerMunicionAdelante.transform.position, containerMunicionAdelante.transform.rotation);
+            
+            municionAdelante.GetComponent<Rigidbody>().velocity = rigidBody.velocity;
+
+            municionAdelante.GetComponent<Rigidbody>().AddRelativeForce(Vector3.back * fuerzaMunicion, ForceMode.Impulse);
+            municionAdelante.GetComponent<Rigidbody>().AddRelativeForce(Vector3.up * (fuerzaMunicion / 5), ForceMode.Impulse);
+
+            municionDisponible -= 1;
+            txtMunicion.text = municionDisponible.ToString();
+     }
 }
