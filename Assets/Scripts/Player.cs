@@ -15,6 +15,9 @@ public class Player : MonoBehaviour
     private float contadorMinutos = 0;
     private bool puertosHabilitados = true;
     private float contColdownPerdida = 0;
+    private bool colisionDetectada = false;
+    public float contPowerUp = 0f;
+    private int limitePowerUp = 10;
 
     // Public
     public float velocidad = 1.5f;
@@ -24,7 +27,7 @@ public class Player : MonoBehaviour
     public float limiteSegundos = 59f;
     public float limiteMinutos = 5f;
     public int oro = 50;
-
+    public GameObject escudo;
 
     public Text lblOro;
     public Text lblTiempo;
@@ -117,6 +120,7 @@ public class Player : MonoBehaviour
             }
         }
 
+        managerEscudo();
     }
 
     public void habilitarPuertos()
@@ -152,5 +156,34 @@ public class Player : MonoBehaviour
     {
         oro = oro + oroEliminado;
         lblOro.text = oro.ToString();
+    }
+
+    public void managerEscudo()
+    {
+        if (colisionDetectada)
+        {
+            if (contPowerUp <= limitePowerUp)
+            {
+                contPowerUp += Time.deltaTime;
+
+                if (!escudo.activeSelf)
+                {
+                    escudo.SetActive(true);
+                }
+            }
+            else
+            {
+                contPowerUp = 0f;
+                escudo.SetActive(false);
+                colisionDetectada = false;
+            }
+
+        }
+        
+    }
+
+    public void colisionado(bool colision)
+    {
+        colisionDetectada = colision;
     }
 }

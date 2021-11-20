@@ -211,17 +211,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6695041914992212265, guid: db706c319cea9c84fa3b41390a92cf69, type: 3}
   m_PrefabInstance: {fileID: 6695041914927585747}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &118642200 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6695041914365920717, guid: db706c319cea9c84fa3b41390a92cf69, type: 3}
-  m_PrefabInstance: {fileID: 6695041914927585747}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 118642199}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad0f31a6d15895d4e947109136cc7bdd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &152673053
 GameObject:
   m_ObjectHideFlags: 0
@@ -532,26 +521,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6627948352b0be14cac0607d3c6f0117, type: 3}
---- !u!1 &271773447 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 322141796820022949, guid: 6627948352b0be14cac0607d3c6f0117, type: 3}
-  m_PrefabInstance: {fileID: 271773446}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &271773448
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 271773447}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5ea5763d02ae1a43919e11c946594ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  contador: 0
-  txt_ganarPartida: {fileID: 0}
-  tiempoLimite: 3
 --- !u!114 &334822527 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2247622774464155894, guid: 67875e1481b191d4ba6e451a0ca158d6, type: 3}
@@ -695,26 +664,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6627948352b0be14cac0607d3c6f0117, type: 3}
---- !u!1 &545616586 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 322141796820022949, guid: 6627948352b0be14cac0607d3c6f0117, type: 3}
-  m_PrefabInstance: {fileID: 545616585}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &545616587
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 545616586}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5ea5763d02ae1a43919e11c946594ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  contador: 0
-  txt_ganarPartida: {fileID: 0}
-  tiempoLimite: 3
 --- !u!1 &555557321
 GameObject:
   m_ObjectHideFlags: 0
@@ -1586,8 +1535,7 @@ MonoBehaviour:
   ramdomZ: 0
   powerUp: {fileID: 6695041914992212265, guid: db706c319cea9c84fa3b41390a92cf69, type: 3}
   player: {fileID: 334822527}
-  powerUpInstance: {fileID: 118642200}
-  escudo: {fileID: 555557321}
+  colisionDetectada: 0
 --- !u!1 &1056548660
 GameObject:
   m_ObjectHideFlags: 0
@@ -1880,26 +1828,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6627948352b0be14cac0607d3c6f0117, type: 3}
---- !u!1 &1111930027 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 322141796820022949, guid: 6627948352b0be14cac0607d3c6f0117, type: 3}
-  m_PrefabInstance: {fileID: 1111930026}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1111930028
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1111930027}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5ea5763d02ae1a43919e11c946594ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  contador: 0
-  txt_ganarPartida: {fileID: 0}
-  tiempoLimite: 3
 --- !u!1 &1118090507
 GameObject:
   m_ObjectHideFlags: 0
@@ -2691,6 +2619,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2247622774464155894, guid: 67875e1481b191d4ba6e451a0ca158d6, type: 3}
+      propertyPath: escudo
+      value: 
+      objectReference: {fileID: 555557321}
+    - target: {fileID: 2247622774464155894, guid: 67875e1481b191d4ba6e451a0ca158d6, type: 3}
       propertyPath: lblOro
       value: 
       objectReference: {fileID: 1056548662}
@@ -2877,26 +2809,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6627948352b0be14cac0607d3c6f0117, type: 3}
---- !u!1 &1478847912 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 322141796820022949, guid: 6627948352b0be14cac0607d3c6f0117, type: 3}
-  m_PrefabInstance: {fileID: 1478847911}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1478847913
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1478847912}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5ea5763d02ae1a43919e11c946594ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  contador: 0
-  txt_ganarPartida: {fileID: 0}
-  tiempoLimite: 3
 --- !u!1001 &1534389030
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3937,23 +3849,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6627948352b0be14cac0607d3c6f0117, type: 3}
---- !u!1 &6711872782360596278 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 322141796820022949, guid: 6627948352b0be14cac0607d3c6f0117, type: 3}
-  m_PrefabInstance: {fileID: 6711872782360596277}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &6711872782360596279
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6711872782360596278}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5ea5763d02ae1a43919e11c946594ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  contador: 0
-  txt_ganarPartida: {fileID: 0}
-  tiempoLimite: 3

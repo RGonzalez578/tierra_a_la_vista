@@ -5,15 +5,12 @@ using UnityEngine;
 public class PowerUpManager : MonoBehaviour
 {
     public float contPowerUp = 0f;
-    public int limitePowerUp = 30;
+    public int limitePowerUp = 10;
     public float ramdomX;
     public float ramdomZ;
     public GameObject powerUp;
     public Player player;
-    public PowerUp powerUpInstance;
-
-
-    public GameObject escudo;
+    public bool colisionDetectada = false;
 
     // Start is called before the first frame update
     void Start()
@@ -26,24 +23,16 @@ public class PowerUpManager : MonoBehaviour
     {
         if (contPowerUp > limitePowerUp)
         {
-            ramdomX = Random.Range((player.transform.position.x - 200), (player.transform.position.x + 200));
-            ramdomZ = Random.Range((player.transform.position.z - 200), (player.transform.position.z + 200));
+            ramdomX = Random.Range((player.transform.position.x - 100), (player.transform.position.x + 100));
+            ramdomZ = Random.Range((player.transform.position.z - 100), (player.transform.position.z + 100));
 
             var prefab = GameObject.Instantiate(powerUp, new Vector3(ramdomX, 11, ramdomZ), Quaternion.Euler(0, 0, 0));
-            prefab.GetComponent<PowerUp>().setEscudo(escudo);
-            
-            if (contPowerUp <= limitePowerUp)
-            {
-                contPowerUp += Time.deltaTime;
-            }
-            else
-            {
-                contPowerUp = 0f;
-                prefab.GetComponent<PowerUp>().setEscudoFalse(escudo);
-                //Debug.Log("Escudo desactivado");
-            }
 
-            //contPowerUp = 0f;
+            prefab.GetComponent<PowerUp>().setPowerUpManager(this);
+
+            contPowerUp = 0f;
+
+            //prefab.GetComponent<PowerUp>().quitarEscudo(escudo);
 
         }
         else
@@ -51,5 +40,16 @@ public class PowerUpManager : MonoBehaviour
             contPowerUp += Time.deltaTime;
         }
 
+        if (colisionDetectada)
+        {
+            player.colisionado(colisionDetectada);
+            colisionDetectada = false;
+        }
+
+    }
+
+    public void colisionado(bool colision)
+    {
+        colisionDetectada = colision;
     }
 }
