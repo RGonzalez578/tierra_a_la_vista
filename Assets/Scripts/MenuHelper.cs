@@ -17,7 +17,7 @@ public class MenuHelper : MonoBehaviour
         }
         catch (System.Exception ex)
         {
-            Debug.Log("Se te olvidó poner el GameManager en la escena");
+            Debug.Log("Se te olvidó poner el GameManager en la escena" + ex);
         }
     }
 
@@ -29,7 +29,7 @@ public class MenuHelper : MonoBehaviour
         }
         catch (System.Exception ex)
         {
-            Debug.Log("Se te olvidó poner el GameManager en la escena");
+            Debug.Log("Se te olvidó poner el GameManager en la escena" + ex);
         }
     }
 
@@ -41,7 +41,7 @@ public class MenuHelper : MonoBehaviour
         }
         catch (System.Exception ex)
         {
-            Debug.Log("Se te olvidó poner el GameManager en la escena");
+            Debug.Log("Se te olvidó poner el GameManager en la escena" + ex);
         }
     }
 
@@ -53,7 +53,7 @@ public class MenuHelper : MonoBehaviour
         }
         catch (System.Exception ex)
         {
-            Debug.Log("Se te olvidó poner el GameManager en la escena");
+            Debug.Log("Se te olvidó poner el GameManager en la escena" + ex);
         }
     }
 
@@ -65,7 +65,7 @@ public class MenuHelper : MonoBehaviour
         }
         catch (System.Exception ex)
         {
-            Debug.Log("Se te olvidó poner el GameManager en la escena");
+            Debug.Log("Se te olvidó poner el GameManager en la escena" + ex);
         }
     }
 

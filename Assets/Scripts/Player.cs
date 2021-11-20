@@ -15,6 +15,9 @@ public class Player : MonoBehaviour
     private float contadorMinutos = 0;
     private bool puertosHabilitados = true;
     private float contColdownPerdida = 0;
+    private bool colisionDetectada = false;
+    public float contPowerUp = 0f;
+    private int limitePowerUp = 10;
     private int enemigosEliminados = 0;
     private float fuerzaMunicion = 20f;
     private float cooldown = 0;
@@ -27,6 +30,7 @@ public class Player : MonoBehaviour
     public float limiteSegundos = 59f;
     public float limiteMinutos = 5f;
     public int oro = 50;
+    public GameObject escudo;
     public int municionDisponible = 50;
     public GameObject municionJugador;
     public GameObject containerMunicionAdelante;
@@ -43,11 +47,14 @@ public class Player : MonoBehaviour
 
     void Start()
     {
+        var escudo = transform.GetChild(25).gameObject;
+        escudo.SetActive(false);
         rigidBody = this.GetComponent<Rigidbody>();
         posicionInicial = new Vector3(transform.position.x, transform.position.y, transform.position.z);
         lblOro.text = oro.ToString();
         txtEnemigosEliminados.text = enemigosEliminados.ToString();
         contColdownPerdida = 3f;
+        
         txtMunicion.text = municionDisponible.ToString();
 
 
@@ -144,6 +151,7 @@ public class Player : MonoBehaviour
             cooldown = 3;
         }
 
+        managerEscudo();
     }
 
     public void habilitarPuertos()
@@ -186,12 +194,42 @@ public class Player : MonoBehaviour
         oro = oro + oroEliminado;
         lblOro.text = oro.ToString();
     }
+    
+    public void managerEscudo()
+    {
+        if (colisionDetectada)
+        {
+            if (contPowerUp <= limitePowerUp)
+            {
+                contPowerUp += Time.deltaTime;
 
+                if (!escudo.activeSelf)
+                {
+                    escudo.SetActive(true);
+                }
+            }
+            else
+            {
+                contPowerUp = 0f;
+                escudo.SetActive(false);
+                colisionDetectada = false;
+            }
+
+        }
+        
+    }
+
+    public void colisionado(bool colision)
+    {
+        colisionDetectada = colision;
+    }
+    
     public void sumarMunicion(int municion)
     {
         municionDisponible = municionDisponible + municion;
         txtMunicion.text = municionDisponible.ToString();
     }
+    
     public void sumarEnemigosEliminados()
     {
         enemigosEliminados++;
@@ -211,6 +249,7 @@ public class Player : MonoBehaviour
         }
         return puntajeJugador;
     }
+    
     public void disparar()
     {
         if (municionDisponible > 0 && municionDisponible != 2 && municionDisponible != 1)
@@ -262,7 +301,5 @@ public class Player : MonoBehaviour
 
             municionDisponible -= 1;
             txtMunicion.text = municionDisponible.ToString();
-        }
-        
-    }
+     }
 }
