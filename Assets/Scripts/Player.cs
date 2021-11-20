@@ -47,7 +47,6 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        var escudo = transform.GetChild(25).gameObject;
         escudo.SetActive(false);
         rigidBody = this.GetComponent<Rigidbody>();
         posicionInicial = new Vector3(transform.position.x, transform.position.y, transform.position.z);
@@ -249,7 +248,7 @@ public class Player : MonoBehaviour
         }
         return puntajeJugador;
     }
-    
+
     public void disparar()
     {
         if (municionDisponible > 0 && municionDisponible != 2 && municionDisponible != 1)
@@ -290,10 +289,11 @@ public class Player : MonoBehaviour
 
             municionDisponible -= 2;
             txtMunicion.text = municionDisponible.ToString();
-        }else if (municionDisponible == 1)
+        }
+        else if (municionDisponible == 1)
         {
             var municionAdelante = GameObject.Instantiate(municionJugador, containerMunicionAdelante.transform.position, containerMunicionAdelante.transform.rotation);
-            
+
             municionAdelante.GetComponent<Rigidbody>().velocity = rigidBody.velocity;
 
             municionAdelante.GetComponent<Rigidbody>().AddRelativeForce(Vector3.back * fuerzaMunicion, ForceMode.Impulse);
@@ -301,5 +301,6 @@ public class Player : MonoBehaviour
 
             municionDisponible -= 1;
             txtMunicion.text = municionDisponible.ToString();
-     }
+        }
+    }
 }
