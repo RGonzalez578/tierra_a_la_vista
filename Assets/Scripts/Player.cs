@@ -21,6 +21,7 @@ public class Player : MonoBehaviour
     private int enemigosEliminados = 0;
     private float fuerzaMunicion = 20f;
     private float cooldown = 0;
+    private bool protegido = false;
 
     // Public
     public float velocidad = 1.5f;
@@ -204,12 +205,14 @@ public class Player : MonoBehaviour
 
                 if (!escudo.activeSelf)
                 {
+                    protegido = true;
                     escudo.SetActive(true);
                 }
             }
             else
             {
                 contPowerUp = 0f;
+                protegido = false;
                 escudo.SetActive(false);
                 colisionDetectada = false;
             }
@@ -302,5 +305,10 @@ public class Player : MonoBehaviour
             municionDisponible -= 1;
             txtMunicion.text = municionDisponible.ToString();
         }
+    }
+
+    public bool getProtegido()
+    {
+        return protegido;
     }
 }

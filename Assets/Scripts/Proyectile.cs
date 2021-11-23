@@ -29,27 +29,32 @@ public class Proyectile : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            
             var player = other.GetComponent<Player>();
-            player.restarOro(oroEliminado);
 
-            // Se obtiene la posición del spawn point
-            var container = player.transform.GetChild(24);
+            if (!player.getProtegido())
+            {
+                player.restarOro(oroEliminado);
 
-            //Debug.Log(""+ container.transform.position.x + "---" + container.transform.position.z);
+                // Se obtiene la posición del spawn point
+                var container = player.transform.GetChild(24);
 
-            transformX = container.transform.position.x;
-            transformY = 11;
-            transformZ = container.transform.position.z;
+                //Debug.Log(""+ container.transform.position.x + "---" + container.transform.position.z);
 
-            int randomX = Random.Range(-1, 1);
-            int randomY = Random.Range(-1, 1);
+                transformX = container.transform.position.x;
+                transformY = 11;
+                transformZ = container.transform.position.z;
 
-            var prefabOro = GameObject.Instantiate(oro, new Vector3(transformX, transformY, transformZ), Quaternion.Euler(0, 0, 0));
-            rigidbody = prefabOro.GetComponent<Rigidbody>();
-            rigidbody.AddRelativeForce(new Vector3(randomX, transformY, randomY) * fuerza, ForceMode.Impulse);
-            rigidbody.AddRelativeForce(Vector3.up * fuerza, ForceMode.Impulse);
-            //prefabOro.posicionar(transformX, transformY, transformZ);
-            //Debug.Log("" + prefabOro.transform.position.x + "---" + prefabOro.transform.position.z);
+                int randomX = Random.Range(-1, 1);
+                int randomY = Random.Range(-1, 1);
+
+                var prefabOro = GameObject.Instantiate(oro, new Vector3(transformX, transformY, transformZ), Quaternion.Euler(0, 0, 0));
+                rigidbody = prefabOro.GetComponent<Rigidbody>();
+                rigidbody.AddRelativeForce(new Vector3(randomX, transformY, randomY) * fuerza, ForceMode.Impulse);
+                rigidbody.AddRelativeForce(Vector3.up * fuerza, ForceMode.Impulse);
+                //prefabOro.posicionar(transformX, transformY, transformZ);
+                //Debug.Log("" + prefabOro.transform.position.x + "---" + prefabOro.transform.position.z);
+            }
         }
     }
 }

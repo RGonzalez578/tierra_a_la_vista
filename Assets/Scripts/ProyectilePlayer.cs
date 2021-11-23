@@ -23,6 +23,7 @@ public class ProyectilePlayer : MonoBehaviour
         {
             other.gameObject.GetComponent<Floater>().setDestruido(true);
             other.gameObject.GetComponent<Enemy>().setDestruido(true);
+            Debug.Log("Destruido");
             other.gameObject.GetComponent<BoxCollider>().enabled = false;
             Destroy(other.gameObject, 3);
             player.sumarEnemigosEliminados();
