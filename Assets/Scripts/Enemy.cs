@@ -4,16 +4,24 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    //Private
     private Rigidbody rigidBody;
     private Vector3 anguloRotacion;
     private bool destruido;
+    private float fuerzaMunicion = 20f;
+    private float cooldown = 0;
 
+    //Public 
     public float velocidad = 1.5f;
     public Vector3 playerPosition;
     public Vector3 enemyPosition;
     public Player player;
+    public GameObject municionEnemy;
+    public GameObject containerMunicionAdelante;
+    public GameObject containerMunicionIzq;
+    public GameObject containerMunicionDer;
 
-    
+
     void Start()
     {
         rigidBody = GetComponent<Rigidbody>();
@@ -23,6 +31,18 @@ public class Enemy : MonoBehaviour
     
     void Update()
     {
+
+        if (cooldown > 0)
+        {
+            cooldown -= Time.deltaTime;
+        }
+        if (cooldown <= 0)
+        {
+            disparar();
+            cooldown = 5;
+        }
+
+
         if (!destruido)
         {
             playerPosition = player.transform.position;
@@ -68,4 +88,28 @@ public class Enemy : MonoBehaviour
     {
         destruido = value;
     }
+
+
+    public void disparar()
+    {
+
+        var municionAdelante = GameObject.Instantiate(municionEnemy, containerMunicionAdelante.transform.position, containerMunicionAdelante.transform.rotation);
+        var municionizq = GameObject.Instantiate(municionEnemy, containerMunicionIzq.transform.position, containerMunicionIzq.transform.rotation);
+        var municionDer = GameObject.Instantiate(municionEnemy, containerMunicionDer.transform.position, containerMunicionDer.transform.rotation);
+
+        municionAdelante.GetComponent<Rigidbody>().velocity = rigidBody.velocity;
+        municionizq.GetComponent<Rigidbody>().velocity = rigidBody.velocity;
+        municionDer.GetComponent<Rigidbody>().velocity = rigidBody.velocity;
+
+        municionAdelante.GetComponent<Rigidbody>().AddRelativeForce(Vector3.back * fuerzaMunicion, ForceMode.Impulse);
+        municionAdelante.GetComponent<Rigidbody>().AddRelativeForce(Vector3.up * (fuerzaMunicion / 5), ForceMode.Impulse);
+
+        municionizq.GetComponent<Rigidbody>().AddRelativeForce(Vector3.right * fuerzaMunicion, ForceMode.Impulse);
+        municionizq.GetComponent<Rigidbody>().AddRelativeForce(Vector3.up * (fuerzaMunicion / 5), ForceMode.Impulse);
+
+        municionDer.GetComponent<Rigidbody>().AddRelativeForce(Vector3.left * fuerzaMunicion, ForceMode.Impulse);
+        municionDer.GetComponent<Rigidbody>().AddRelativeForce(Vector3.up * (fuerzaMunicion / 5), ForceMode.Impulse);
+            
+    }
+
 }
