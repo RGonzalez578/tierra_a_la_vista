@@ -28,7 +28,13 @@ public class Enemy : MonoBehaviour
             playerPosition = player.transform.position;
             enemyPosition = transform.position;
 
-            float x = playerPosition.x;
+            if (Vector3.Distance(enemyPosition, playerPosition) < 100)
+            {
+                transform.position = Vector3.MoveTowards(enemyPosition, playerPosition, velocidad * Time.deltaTime);
+                transform.forward = playerPosition - transform.position;
+            }
+
+            /*float x = playerPosition.x;
             float z = playerPosition.z;
 
             float angulo = 0f;
@@ -53,7 +59,7 @@ public class Enemy : MonoBehaviour
             rigidBody.MoveRotation(rigidBody.rotation * deltaRotation);
 
 
-            rigidBody.AddRelativeForce(Vector3.forward * -1 * (velocidad / 2));
+            rigidBody.AddRelativeForce(Vector3.forward * -1 * (velocidad / 2));*/
         }
         else
         {
