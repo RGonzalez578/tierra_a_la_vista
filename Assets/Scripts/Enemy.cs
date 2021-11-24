@@ -83,6 +83,8 @@ public class Enemy : MonoBehaviour
         }
         else
         {
+            rigidBody.constraints = RigidbodyConstraints.None;
+
             anguloRotacion = (new Vector3(Random.Range(-1, 1), 0, Random.Range(-1, 1))) * velocidad;
             Quaternion deltaRotation = Quaternion.Euler(anguloRotacion * Time.fixedDeltaTime);
             rigidBody.MoveRotation(rigidBody.rotation * deltaRotation);
@@ -118,4 +120,8 @@ public class Enemy : MonoBehaviour
             
     }
 
+    public void setPlayer(Player player)
+    {
+        this.player = player;
+    }
 }
