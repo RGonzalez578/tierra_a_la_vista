@@ -38,7 +38,7 @@ public class Enemy : MonoBehaviour
 
             if (Vector3.Distance(enemyPosition, playerPosition) < 100)
             {
-                Vector3 vector = new Vector3(0, 0, Random.Range(-10, 10));
+                //Vector3 vector = new Vector3(0, 0, Random.Range(-10, 10));
                 transform.position = Vector3.MoveTowards(enemyPosition, playerPosition, velocidad * Time.deltaTime);
                 //transform.forward = (playerPosition - transform.position) + vector;
                 transform.forward = playerPosition - transform.position;

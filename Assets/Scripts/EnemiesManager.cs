@@ -10,6 +10,8 @@ public class EnemiesManager : MonoBehaviour
     public int cooldownSpawnEnemy = 30;
     public int nEnemies;
 
+    public GameObject[] spawns;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +27,7 @@ public class EnemiesManager : MonoBehaviour
         }
         else
         {
-            int nCuadrante = Random.Range(1, 5);
+            /*int nCuadrante = Random.Range(1, 5);
             float posX = 0;
             float posZ = 0;
 
@@ -50,9 +52,12 @@ public class EnemiesManager : MonoBehaviour
                     posX = player.transform.position.x + Random.Range(-150, -100);
                     posZ = player.transform.position.z + Random.Range(100, 150);
                     break;
-            }
+            }*/
 
-            var prefabEnemy = GameObject.Instantiate(enemy, new Vector3(posX, 50, posZ), Quaternion.Euler(0, 0, 0));
+            int nSpawn = Random.Range(0, spawns.Length);
+            Vector3 vectorSpawn = new Vector3(spawns[nSpawn].transform.position.x + Random.Range(-20, 20), 9, spawns[nSpawn].transform.position.z + Random.Range(-20, 20));
+
+            var prefabEnemy = GameObject.Instantiate(enemy, vectorSpawn, Quaternion.Euler(0, 0, 0));
             prefabEnemy.GetComponent<Enemy>().setPlayer(player);
             nEnemies++;
             contOleada = 0;
