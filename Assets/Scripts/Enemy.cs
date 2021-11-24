@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     private bool destruido;
     private float fuerzaMunicion = 20f;
     private float cooldown = 0;
+    private float cambioDireccion = 5f;
 
     //Public 
     public float velocidad = 1.5f;
@@ -51,6 +52,21 @@ public class Enemy : MonoBehaviour
                 {
                     disparar();
                     cooldown = 5;
+                }
+            }
+            else
+            {                
+                if (cambioDireccion > 0)
+                {
+                    cambioDireccion -= Time.deltaTime;
+                    rigidBody.AddRelativeForce(Vector3.forward * (velocidad / 2));
+                }
+                else
+                {
+                    //transform.rotation = new Quaternion(0, Random.Range(-360, 360), 0, 0);
+                    transform.rotation = Quaternion.FromToRotation(new Vector3(Random.Range(-1, 1), 0, 0), transform.forward);
+                    cambioDireccion = 5f;
+                    Debug.Log(cambioDireccion);
                 }
             }
 

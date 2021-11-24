@@ -57,7 +57,7 @@ public class EnemiesManager : MonoBehaviour
             int nSpawn = Random.Range(0, spawns.Length);
             Vector3 vectorSpawn = new Vector3(spawns[nSpawn].transform.position.x + Random.Range(-20, 20), 9, spawns[nSpawn].transform.position.z + Random.Range(-20, 20));
 
-            var prefabEnemy = GameObject.Instantiate(enemy, vectorSpawn, Quaternion.Euler(0, 0, 0));
+            var prefabEnemy = GameObject.Instantiate(enemy, vectorSpawn, Quaternion.Euler(0, Random.Range(0, 360), 0));
             prefabEnemy.GetComponent<Enemy>().setPlayer(player);
             nEnemies++;
             contOleada = 0;
