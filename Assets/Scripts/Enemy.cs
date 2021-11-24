@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     private bool destruido;
     private float fuerzaMunicion = 20f;
     private float cooldown = 0;
+    private float cambioDireccion = 5f;
 
     //Public 
     public float velocidad = 1.5f;
@@ -38,7 +39,7 @@ public class Enemy : MonoBehaviour
 
             if (Vector3.Distance(enemyPosition, playerPosition) < 100)
             {
-                Vector3 vector = new Vector3(0, 0, Random.Range(-10, 10));
+                //Vector3 vector = new Vector3(0, 0, Random.Range(-10, 10));
                 transform.position = Vector3.MoveTowards(enemyPosition, playerPosition, velocidad * Time.deltaTime);
                 //transform.forward = (playerPosition - transform.position) + vector;
                 transform.forward = playerPosition - transform.position;
@@ -51,6 +52,21 @@ public class Enemy : MonoBehaviour
                 {
                     disparar();
                     cooldown = 5;
+                }
+            }
+            else
+            {                
+                if (cambioDireccion > 0)
+                {
+                    cambioDireccion -= Time.deltaTime;
+                    rigidBody.AddRelativeForce(Vector3.forward * (velocidad / 2));
+                }
+                else
+                {
+                    //transform.rotation = new Quaternion(0, Random.Range(-360, 360), 0, 0);
+                    transform.rotation = Quaternion.FromToRotation(new Vector3(Random.Range(-1, 1), 0, 0), transform.forward);
+                    cambioDireccion = 5f;
+                    Debug.Log(cambioDireccion);
                 }
             }
 
@@ -83,6 +99,8 @@ public class Enemy : MonoBehaviour
         }
         else
         {
+            rigidBody.constraints = RigidbodyConstraints.None;
+
             anguloRotacion = (new Vector3(Random.Range(-1, 1), 0, Random.Range(-1, 1))) * velocidad;
             Quaternion deltaRotation = Quaternion.Euler(anguloRotacion * Time.fixedDeltaTime);
             rigidBody.MoveRotation(rigidBody.rotation * deltaRotation);
@@ -118,4 +136,8 @@ public class Enemy : MonoBehaviour
             
     }
 
+    public void setPlayer(Player player)
+    {
+        this.player = player;
+    }
 }

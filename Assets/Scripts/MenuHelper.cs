@@ -9,6 +9,11 @@ public class MenuHelper : MonoBehaviour
     public string SceneInstructions;
     public string SceneCredits;
 
+    private void Start()
+    {
+        //PlayerPrefs.DeleteAll();
+    }
+
     public void StartGame()
     {
         try

@@ -48,7 +48,10 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        escudo.SetActive(false);
+        if (escudo != null)
+        {
+            escudo.SetActive(false);
+        }        
         rigidBody = this.GetComponent<Rigidbody>();
         posicionInicial = new Vector3(transform.position.x, transform.position.y, transform.position.z);
         lblOro.text = oro.ToString();
@@ -83,15 +86,18 @@ public class Player : MonoBehaviour
             }
 
             int contadorSeg = Convert.ToInt32(contadorSegundos);
-
-            if (contadorSeg < 10)
+            if (lblTiempo != null)
             {
-                lblTiempo.text = contadorMinutos.ToString() + ":0" + contadorSeg.ToString();
+                if (contadorSeg < 10)
+                {
+                    lblTiempo.text = contadorMinutos.ToString() + ":0" + contadorSeg.ToString();
+                }
+                else
+                {
+                    lblTiempo.text = contadorMinutos.ToString() + ":" + contadorSeg.ToString();
+                }
             }
-            else
-            {
-                lblTiempo.text = contadorMinutos.ToString() + ":" + contadorSeg.ToString();
-            }
+            
         }
         else if(puertosHabilitados)
         {

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class TriggerPerdidaJugador : MonoBehaviour
 {
-
+    private bool generadoCorrectamente = false;
     public GameObject enemy;
 
     private void OnTriggerEnter(Collider other)
@@ -24,5 +24,18 @@ public class TriggerPerdidaJugador : MonoBehaviour
             other.gameObject.GetComponent<Floater>().setDestruido(true);
             other.gameObject.GetComponent<BoxCollider>().enabled = false;
         }
+
+        if (!generadoCorrectamente)
+        {
+            if (other.gameObject.CompareTag("Escenario"))
+            {
+                Destroy(enemy.gameObject);
+            }
+            else if (other.gameObject.CompareTag("Agua"))
+            {
+                generadoCorrectamente = true;
+            }
+        }
+
     }
 }
