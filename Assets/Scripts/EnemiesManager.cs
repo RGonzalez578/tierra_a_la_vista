@@ -88,7 +88,7 @@ public class EnemiesManager : MonoBehaviour
                 contMostrarMensaje += Time.deltaTime;
                 txtMensajes.text = "Aparecerán 12 enemigos pronto";
             }
-            else
+            else if (msgOleadaActiva.Equals("OLEADA_3_ACTIVA"))
             {
                 contMostrarMensaje = 0f;
                 txtMensajes.text = "";
