@@ -9,6 +9,11 @@ public class MenuHelper : MonoBehaviour
     public string SceneInstructions;
     public string SceneCredits;
 
+    private void Start()
+    {
+        //PlayerPrefs.DeleteAll();
+    }
+
     public void StartGame()
     {
         try
@@ -17,7 +22,7 @@ public class MenuHelper : MonoBehaviour
         }
         catch (System.Exception ex)
         {
-            Debug.Log("Se te olvidó poner el GameManager en la escena");
+            Debug.Log("Se te olvidó poner el GameManager en la escena" + ex);
         }
     }
 
@@ -29,7 +34,7 @@ public class MenuHelper : MonoBehaviour
         }
         catch (System.Exception ex)
         {
-            Debug.Log("Se te olvidó poner el GameManager en la escena");
+            Debug.Log("Se te olvidó poner el GameManager en la escena" + ex);
         }
     }
 
@@ -41,7 +46,7 @@ public class MenuHelper : MonoBehaviour
         }
         catch (System.Exception ex)
         {
-            Debug.Log("Se te olvidó poner el GameManager en la escena");
+            Debug.Log("Se te olvidó poner el GameManager en la escena" + ex);
         }
     }
 
@@ -53,7 +58,7 @@ public class MenuHelper : MonoBehaviour
         }
         catch (System.Exception ex)
         {
-            Debug.Log("Se te olvidó poner el GameManager en la escena");
+            Debug.Log("Se te olvidó poner el GameManager en la escena" + ex);
         }
     }
 
@@ -65,7 +70,7 @@ public class MenuHelper : MonoBehaviour
         }
         catch (System.Exception ex)
         {
-            Debug.Log("Se te olvidó poner el GameManager en la escena");
+            Debug.Log("Se te olvidó poner el GameManager en la escena" + ex);
         }
     }
 
