@@ -392,7 +392,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -379, y: -246}
+  m_AnchoredPosition: {x: -444, y: -246}
   m_SizeDelta: {x: 600, y: 70.4102}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &108706689
@@ -876,7 +876,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -470, y: 125}
+  m_AnchoredPosition: {x: -539, y: 125}
   m_SizeDelta: {x: 436.2656, y: 70.4102}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1079088263
@@ -1091,7 +1091,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -384, y: -10}
+  m_AnchoredPosition: {x: -453, y: -10}
   m_SizeDelta: {x: 600, y: 70.4102}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1322735808
@@ -1417,8 +1417,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 685, y: 106}
-  m_SizeDelta: {x: 600, y: 70.4102}
+  m_AnchoredPosition: {x: 634, y: 71}
+  m_SizeDelta: {x: 600, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1595062917
 MonoBehaviour:
@@ -1452,8 +1452,9 @@ MonoBehaviour:
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
-    m_LineSpacing: 0
-  m_Text: Texto
+    m_LineSpacing: 1
+  m_Text: "Orquesta Sinf\xF3nica Teatro Castelar de Elda (Alicante) Espa\xF1a - Piratas
+    del Caribe"
 --- !u!222 &1595062918
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1645,7 +1646,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -470, y: 50}
+  m_AnchoredPosition: {x: -539, y: 58}
   m_SizeDelta: {x: 436.2656, y: 70.4102}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1775309369
