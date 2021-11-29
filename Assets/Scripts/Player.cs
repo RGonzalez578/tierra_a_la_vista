@@ -317,4 +317,9 @@ public class Player : MonoBehaviour
     {
         return protegido;
     }
+
+    public float getMinutos()
+    {
+        return contadorMinutos;
+    }
 }

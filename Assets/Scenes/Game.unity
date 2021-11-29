@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -610,6 +610,9 @@ MonoBehaviour:
   contOleada: 0
   cooldownSpawnEnemy: 10
   nEnemies: 0
+  contMostrarMensaje: 0
+  cooldownMensaje: 5
+  msgOleadaActiva: OLEADA_1_ACTIVA
   spawns:
   - {fileID: 633866795}
   - {fileID: 257908628}
@@ -617,6 +620,7 @@ MonoBehaviour:
   - {fileID: 1523406149}
   - {fileID: 945657737}
   - {fileID: 1830158950}
+  txtMensajes: {fileID: 1237135365}
 --- !u!4 &309410698
 Transform:
   m_ObjectHideFlags: 0
@@ -986,8 +990,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 603261786}
   m_LocalRotation: {x: -0.021901768, y: 9.313226e-10, z: -5.820766e-11, w: 0.99976015}
-  m_LocalPosition: {x: 0.9, y: 33.6, z: -7.1}
-  m_LocalScale: {x: 130.17108, y: 130.17108, z: 130.17107}
+  m_LocalPosition: {x: 0, y: 33.6, z: -7.1}
+  m_LocalScale: {x: 150.3476, y: 150.3476, z: 150.34758}
   m_Children: []
   m_Father: {fileID: 361151347}
   m_RootOrder: 28
@@ -2507,7 +2511,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2247622774464155894, guid: 67875e1481b191d4ba6e451a0ca158d6, type: 3}
       propertyPath: limiteSegundos
-      value: 1
+      value: 59
       objectReference: {fileID: 0}
     - target: {fileID: 2247622774464155894, guid: 67875e1481b191d4ba6e451a0ca158d6, type: 3}
       propertyPath: municionJugador
@@ -3390,8 +3394,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -854, y: 461}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: -835.5, y: 461}
+  m_SizeDelta: {x: 60, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1863525225
 MonoBehaviour:
@@ -3413,7 +3417,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d7bc02d29dbd90d44ba99ce5a80d0dd9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e1bf6d95eb6e9a44d82322ab54362289, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
