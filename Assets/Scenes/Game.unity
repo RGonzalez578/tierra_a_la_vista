@@ -2486,6 +2486,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 996739348}
     - target: {fileID: 2247622774464155894, guid: 67875e1481b191d4ba6e451a0ca158d6, type: 3}
+      propertyPath: velocidad
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2247622774464155894, guid: 67875e1481b191d4ba6e451a0ca158d6, type: 3}
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 43216601}
@@ -3431,7 +3435,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: cfb402f8a4a68684181cbb482c4c5572, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0
