@@ -24,20 +24,20 @@ public class ScoresHelper : MonoBehaviour
 
     void Start()
     {
-        txt_primerLugarNombre.text = PlayerPrefs.GetString("Pos1Nombre", "Vacío").ToUpper();
-        txt_primerLugarPuntaje.text = PlayerPrefs.GetInt("Pos1", 0).ToString();
+        txt_primerLugarNombre.text = PlayerPrefs.GetString("Pos0Nombre", "Vacío").ToUpper();
+        txt_primerLugarPuntaje.text = PlayerPrefs.GetInt("Pos0", 0).ToString();
 
-        txt_segundoLugarNombre.text = PlayerPrefs.GetString("Pos2Nombre", "Vacío").ToUpper();
-        txt_segundoLugarPuntaje.text = PlayerPrefs.GetInt("Pos2", 0).ToString();
+        txt_segundoLugarNombre.text = PlayerPrefs.GetString("Pos1Nombre", "Vacío").ToUpper();
+        txt_segundoLugarPuntaje.text = PlayerPrefs.GetInt("Pos1", 0).ToString();
 
-        txt_tercerLugarNombre.text = PlayerPrefs.GetString("Pos3Nombre", "Vacío").ToUpper();
-        txt_tercerLugarPuntaje.text = PlayerPrefs.GetInt("Pos3", 0).ToString();
+        txt_tercerLugarNombre.text = PlayerPrefs.GetString("Pos2Nombre", "Vacío").ToUpper();
+        txt_tercerLugarPuntaje.text = PlayerPrefs.GetInt("Pos2", 0).ToString();
 
-        txt_cuartoLugarNombre.text = PlayerPrefs.GetString("Pos4Nombre", "Vacío").ToUpper();
-        txt_cuartoLugarPuntaje.text = PlayerPrefs.GetInt("Pos4", 0).ToString();
+        txt_cuartoLugarNombre.text = PlayerPrefs.GetString("Pos3Nombre", "Vacío").ToUpper();
+        txt_cuartoLugarPuntaje.text = PlayerPrefs.GetInt("Pos3", 0).ToString();
 
-        txt_quintoLugarNombre.text = PlayerPrefs.GetString("Pos5Nombre", "Vacío").ToUpper();
-        txt_quintoLugarPuntaje.text = PlayerPrefs.GetInt("Pos5", 0).ToString();
+        txt_quintoLugarNombre.text = PlayerPrefs.GetString("Pos4Nombre", "Vacío").ToUpper();
+        txt_quintoLugarPuntaje.text = PlayerPrefs.GetInt("Pos4", 0).ToString();
     }
 
     public void ShowMenu()

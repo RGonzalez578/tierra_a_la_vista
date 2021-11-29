@@ -27,20 +27,19 @@ public class WinHelper : MonoBehaviour
     private string pivoteNombre;
     private string tempNombre;
 
-
     // Start is called before the first frame update
     void Start()
     {
         txt_puntaje.text = GameManager.instancia.getPuntajeJugador().ToString();
 
-        txt_primerLugarNombre.text = PlayerPrefs.GetString("Pos1Nombre", "Vacío").ToUpper();
-        txt_primerLugarPuntaje.text = PlayerPrefs.GetInt("Pos1", 0).ToString();
+        txt_primerLugarNombre.text = PlayerPrefs.GetString("Pos0Nombre", "Vacío").ToUpper();
+        txt_primerLugarPuntaje.text = PlayerPrefs.GetInt("Pos0", 0).ToString();
 
-        txt_segundoLugarNombre.text = PlayerPrefs.GetString("Pos2Nombre", "Vacío").ToUpper();
-        txt_segundoLugarPuntaje.text = PlayerPrefs.GetInt("Pos2", 0).ToString();
+        txt_segundoLugarNombre.text = PlayerPrefs.GetString("Pos1Nombre", "Vacío").ToUpper();
+        txt_segundoLugarPuntaje.text = PlayerPrefs.GetInt("Pos1", 0).ToString();
 
-        txt_tercerLugarNombre.text = PlayerPrefs.GetString("Pos3Nombre", "Vacío").ToUpper();
-        txt_tercerLugarPuntaje.text = PlayerPrefs.GetInt("Pos3", 0).ToString();
+        txt_tercerLugarNombre.text = PlayerPrefs.GetString("Pos2Nombre", "Vacío").ToUpper();
+        txt_tercerLugarPuntaje.text = PlayerPrefs.GetInt("Pos2", 0).ToString();
     }
 
     // Update is called once per frame
